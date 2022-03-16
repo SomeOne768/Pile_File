@@ -1,12 +1,8 @@
+#include "element_generique.h"
 #ifndef PILE_H
 #define PILE_H
 
-//création du type générique
-
-typedef struct type_générique
-{
-	int element;
-}T;
+// structure du maillon
 
 typedef struct Maillon
 {
@@ -14,6 +10,7 @@ typedef struct Maillon
 	struct maillon * suivant
 }maillon_t;
 
+// structure de la Pile
 typedef struct Pile
 {
 	maillon * tete;
