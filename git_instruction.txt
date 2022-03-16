@@ -1,0 +1,12 @@
+git init
+git config --global user.name ""
+					user.email ""
+
+git clone "url"
+
+git add fichier
+git status
+git commit -m "nieme commit"
+
+git push -u origin master
+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
