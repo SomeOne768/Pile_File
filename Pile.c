@@ -29,6 +29,16 @@ pile_t CreationPile()
 	P.tete = NULL;
 	return P;
 }
+// verif Vide
+int EstVidePile(pile P)
+{
+	int verif = 0;
+	if (!(P.tete))
+	{
+		verif=1;
+	}
+	return verif;
+}
 // empiler
 int Empiler(pile_t * P,T objet)
 {
@@ -51,7 +61,7 @@ int Empiler(pile_t * P,T objet)
 T Depiler(pile_t * P)
 {
 	T objet=0;
-	if(P->tete)
+	if(EstVideFile(P))
 	{
 		maillon * m = P->tete;
 		objet = m->element;

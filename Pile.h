@@ -1,7 +1,7 @@
 #include "element_generique.h"
 #ifndef PILE_H
 #define PILE_H
-
+ 
 // structure du maillon
 
 typedef struct Maillon
