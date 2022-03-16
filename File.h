@@ -22,4 +22,11 @@ typedef struct file
 }file_t;
 
 
+
+T CreerObjet(int val);
+file_t CreationFile();
+int EstVideFile(file_t File);
+int Enfiler(file_t *File, T element);
+T Defiler(file_t *File);
+
 #endif
