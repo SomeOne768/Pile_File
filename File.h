@@ -1,13 +1,7 @@
+#include "element_generique.h"
+
 #ifndef FILE_H
 #define FILE_H
-
-
-//Création de notre type générique
-
-typedef struct type_generique{
-	int element;
-}T;
-
 
 typedef struct maillon{
 	T valeur;
