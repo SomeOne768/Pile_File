@@ -5,7 +5,9 @@
 #define TAILLE_MAX 100
 
 //Element générique
-typedef int T;
+typedef int type_generique;
+typedef type_generique T;
 
-
+void AfficherElement(T elt);
+T ElementNeutreT();
 #endif

@@ -1,57 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "File2.h"
-
-
-typedef struct{
-	int nbElt;
-	int taille;
-	int indice_debut;
-	int indice_fin;
-	T tab[TAILLE_MAX];
-
-}File_t;
-
+#include "commun.h" 
 
 /* -------------------------------------------------------------------- */
-/* AfficherElement  Affiche un element générique				        */
-/*                                                                      */
-/* en entrée: rien                                                      */
-/*                                                                      */
-/* sortie: rien                                                         */
-/* -------------------------------------------------------------------- */
-
-/* --------------------    ALGORITHME DE PRINCIPE  -------------------- */
-/* Récuperer un element générique en entrée et associé un affichage     */
-/* correspondnat				                                        */
-/* -------------------------------------------------------------------- */
-void AfficherElement(T elt)
-{
-	printf("%d", elt);
-}
-
-
-/* -------------------------------------------------------------------- */
-/* ElementNeutreT  Retourne ce qui correspond à un element neutre 		*/
-/*                                                                      */
-/* en entrée: rien                                                      */
-/*                                                                      */
-/* sortie: rien															*/
-/* -------------------------------------------------------------------- */
-
-/* --------------------    ALGORITHME DE PRINCIPE  -------------------- */
-/* Ici pour notre type générique on considère le 0 comme étant l'element*/
-/* neutre 					                                            */
-/* -------------------------------------------------------------------- */
-T ElementNeutreT()
-{
-	//Si pointeur on retourne null, sinon on retourne une valeur qui correspond à une valeur neutre/impossible
-
-	return 0;
-}
-
-
-/* -------------------------------------------------------------------- */
-/* CreerFile  Creer et initialiser une File_t 					        */
+/* InitFile  Creer et initialiser une File_t 					        */
 /*                                                                      */
 /* en entrée: rien                                                      */
 /*                                                                      */
@@ -62,14 +15,16 @@ T ElementNeutreT()
 /* --------------------    ALGORITHME DE PRINCIPE  -------------------- */
 /* Initialiser une file_t et la retourner								*/
 /* -------------------------------------------------------------------- */
-File_t CreerFile()
+File_t InitFile(int taille)
 {
 	File_t F;
 	F.nbElt = 0;
-	F.taille = TAILLE_MAX;
+	F.taille = taille;
 	F.indice_debut = 0;
 	F.indice_fin = 0;
-
+	F.tab = (T*)malloc(sizeof(T)*taille);
+	
+	return F;
 }
 
 
@@ -101,6 +56,14 @@ void AfficherFile(File_t F)
 	{
 		nombre--;
 		AfficherElement(F.tab[parcourir]);
+		if(!(nombre%10))
+		{
+			printf("\n");
+		}
+		else
+		{
+			printf(" | ");
+		}
 		parcourir = (parcourir+1) % F.taille;
 	}
 }
@@ -137,11 +100,11 @@ int Enfiler(File_t *F, T elt)
 {
 	//FIFO <=> LILO
 	int code_retour = 0;
-	if(!EstPleineFile(F))
+	if(!EstPleineFile(*F))
 	{
-		F->tab[ F.indice_fin ] = elt;
+		F->tab[ F->indice_fin ] = elt;
 		F->nbElt ++;
-		F->indice_fin = (F->indice_fin+1) % F.taille;
+		F->indice_fin = (F->indice_fin+1) % F->taille;
 		code_retour = 1;
 	}
 	return code_retour;
@@ -149,10 +112,10 @@ int Enfiler(File_t *F, T elt)
 
 T Defiler(File_t *F)
 {
-	T = elementNeutreT();
+	T tete = ElementNeutreT();
 	if(!EstVideFile(*F))
 	{
-		T = F->tab[ F->indice_fin ];
+		tete = F->tab[ F->indice_fin ];
 		F->indice_fin --;
 		F->nbElt --;
 		if(F->indice_fin < 0)
@@ -165,6 +128,6 @@ T Defiler(File_t *F)
 		printf("La file est vide, aucun element à récuperer.\n");
 	}
 
-	return T;
+	return tete;
 }
 
