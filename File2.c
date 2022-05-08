@@ -115,12 +115,12 @@ T Defiler(File_t *F)
 	T tete = ElementNeutreT();
 	if(!EstVideFile(*F))
 	{
-		tete = F->tab[ F->indice_fin ];
-		F->indice_fin --;
+		tete = F->tab[ F->indice_debut ];
+		F->indice_debut ++;
 		F->nbElt --;
-		if(F->indice_fin < 0)
+		if(F->indice_debut >= F->taille)
 		{
-			F->indice_fin = F->taille-1;
+			F->indice_debut = 0;
 		}
 	}
 	else
