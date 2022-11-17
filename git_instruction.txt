@@ -9,5 +9,4 @@ git status
 git commit -m "nieme commit"
 
 git push -u origin master
-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
 git pull --allow-unrelated-histories
